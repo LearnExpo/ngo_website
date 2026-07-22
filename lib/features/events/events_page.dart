@@ -49,6 +49,10 @@ class EventsPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final width = MediaQuery.of(context).size.width;
+    final isMobile = Breakpoints.isMobile(width);
+    final isTablet = Breakpoints.isTablet(width);
+    final columns = isMobile ? 1 : (isTablet ? 2 : 3);
     final upcoming = kEvents.where((e) => e.isUpcoming).toList();
     final past = kEvents.where((e) => !e.isUpcoming).toList();
 
@@ -58,27 +62,34 @@ class EventsPage extends StatelessWidget {
           "Photos from Hopeworks Foundation's programs around the world.",
       body: ContentContainer(
         padding: const EdgeInsets.symmetric(vertical: 100),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text('Events', style: Theme.of(context).textTheme.displayMedium),
-            const SizedBox(height: 12),
-            Text('Join us in person or online.',
-                style: Theme.of(context).textTheme.bodyLarge),
-            const SizedBox(height: 40),
-            Text('Upcoming', style: Theme.of(context).textTheme.headlineMedium),
-            const SizedBox(height: 20),
-            for (int i = 0; i < upcoming.length; i++)
-              _EventCard(event: upcoming[i])
-                  .animate()
-                  .fadeIn(delay: (i * 100).ms, duration: 400.ms)
-                  .slideX(begin: 0.05, end: 0),
-            const SizedBox(height: 48),
-            Text('Past Events',
-                style: Theme.of(context).textTheme.headlineMedium),
-            const SizedBox(height: 20),
-            for (final event in past) _EventCard(event: event, isPast: true),
-          ],
+        child: Padding(
+          padding: EdgeInsets.symmetric(horizontal: isMobile ? 10 : 0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                'Events',
+                style: Theme.of(context).textTheme.displayMedium,
+              ),
+              const SizedBox(height: 12),
+              Text('Join us in person or online.',
+                  style: Theme.of(context).textTheme.bodyLarge),
+              const SizedBox(height: 40),
+              Text('Upcoming',
+                  style: Theme.of(context).textTheme.headlineMedium),
+              const SizedBox(height: 20),
+              for (int i = 0; i < upcoming.length; i++)
+                _EventCard(event: upcoming[i])
+                    .animate()
+                    .fadeIn(delay: (i * 100).ms, duration: 400.ms)
+                    .slideX(begin: 0.05, end: 0),
+              const SizedBox(height: 48),
+              Text('Past Events',
+                  style: Theme.of(context).textTheme.headlineMedium),
+              const SizedBox(height: 20),
+              for (final event in past) _EventCard(event: event, isPast: true),
+            ],
+          ),
         ),
       ),
     );

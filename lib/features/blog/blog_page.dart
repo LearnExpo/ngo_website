@@ -19,13 +19,16 @@ class BlogPage extends StatelessWidget {
 
     return PageScaffold(
       title: 'Blog & News | Hopeworks Foundation',
-  description: "Updates, milestones, and stories from Hopeworks Foundation's programs.",
+      description:
+          "Updates, milestones, and stories from Hopeworks Foundation's programs.",
       body: ContentContainer(
-        padding: const EdgeInsets.symmetric(vertical: 100),
+        padding:
+            EdgeInsets.symmetric(vertical: 100, horizontal: isMobile ? 10 : 0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Text('Blog & News', style: Theme.of(context).textTheme.displayMedium),
+            Text('Blog & News',
+                style: Theme.of(context).textTheme.displayMedium),
             const SizedBox(height: 12),
             Text(
               'Updates, milestones, and stories from our programs.',
@@ -79,19 +82,22 @@ class _BlogCard extends StatelessWidget {
             Row(
               children: [
                 Container(
-                  padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
                   decoration: BoxDecoration(
                     color: AppColors.accent.withOpacity(0.15),
                     borderRadius: BorderRadius.circular(20),
                   ),
                   child: Text(
                     post.category,
-                    style: const TextStyle(fontSize: 11, fontWeight: FontWeight.w600),
+                    style: const TextStyle(
+                        fontSize: 11, fontWeight: FontWeight.w600),
                   ),
                 ),
                 const Spacer(),
                 Text(post.date,
-                    style: const TextStyle(fontSize: 12, color: AppColors.textSecondary)),
+                    style: const TextStyle(
+                        fontSize: 12, color: AppColors.textSecondary)),
               ],
             ),
             const SizedBox(height: 16),
@@ -109,9 +115,13 @@ class _BlogCard extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text('By ${post.author} · ${post.readMinutes} min read',
-                    style: const TextStyle(fontSize: 12, color: AppColors.textSecondary)),
+                    style: const TextStyle(
+                        fontSize: 12, color: AppColors.textSecondary)),
                 const Text('Read →',
-                    style: TextStyle(fontSize: 12, fontWeight: FontWeight.w600, color: AppColors.primary)),
+                    style: TextStyle(
+                        fontSize: 12,
+                        fontWeight: FontWeight.w600,
+                        color: AppColors.primary)),
               ],
             ),
           ],

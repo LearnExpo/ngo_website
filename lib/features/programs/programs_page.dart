@@ -19,7 +19,8 @@ class ProgramsPage extends StatelessWidget {
 
     return PageScaffold(
       title: 'Our Programs | Hopeworks Foundation',
-  description: "Explore Hopeworks Foundation's active programs in education, healthcare, clean water, and disaster relief.",
+      description:
+          "Explore Hopeworks Foundation's active programs in education, healthcare, clean water, and disaster relief.",
       body: ContentContainer(
         padding: const EdgeInsets.symmetric(vertical: 100),
         child: Column(
@@ -40,6 +41,9 @@ class ProgramsPage extends StatelessWidget {
             const SizedBox(height: 48),
             GridView.builder(
               shrinkWrap: true,
+              padding: isMobile
+                  ? EdgeInsets.symmetric(horizontal: 5)
+                  : EdgeInsetsGeometry.zero,
               physics: const NeverScrollableScrollPhysics(),
               itemCount: allPrograms.length,
               gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(

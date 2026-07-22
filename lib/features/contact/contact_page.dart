@@ -42,9 +42,11 @@ class _ContactPageState extends State<ContactPage> {
 
     return PageScaffold(
       title: 'Contact Us | Hopeworks Foundation',
-  description: 'Get in touch with Hopeworks Foundation — questions, partnerships, and support.',
+      description:
+          'Get in touch with Hopeworks Foundation — questions, partnerships, and support.',
       body: ContentContainer(
-        padding: const EdgeInsets.symmetric(vertical: 100),
+        padding:
+            EdgeInsets.symmetric(vertical: 100, horizontal: isMobile ? 10 : 0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -54,23 +56,27 @@ class _ContactPageState extends State<ContactPage> {
             Text('We\'d love to hear from you.',
                 style: Theme.of(context).textTheme.bodyLarge),
             const SizedBox(height: 40),
-           isMobile
-    ? Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          _submitted ? _buildThankYou(context) : _buildForm(),
-          const SizedBox(height: 40),
-          _buildInfoPanel(context),
-        ],
-      )
-    : Row(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Expanded(flex: 3, child: _submitted ? _buildThankYou(context) : _buildForm()),
-          const SizedBox(width: 40),
-          Expanded(flex: 2, child: _buildInfoPanel(context)),
-        ],
-      ),
+            isMobile
+                ? Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      _submitted ? _buildThankYou(context) : _buildForm(),
+                      const SizedBox(height: 40),
+                      _buildInfoPanel(context),
+                    ],
+                  )
+                : Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Expanded(
+                          flex: 3,
+                          child: _submitted
+                              ? _buildThankYou(context)
+                              : _buildForm()),
+                      const SizedBox(width: 40),
+                      Expanded(flex: 2, child: _buildInfoPanel(context)),
+                    ],
+                  ),
           ],
         ),
       ),

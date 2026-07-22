@@ -37,16 +37,21 @@ class _DonatePageState extends State<DonatePage> {
   }
 
   String _impactLine(int amount) {
-    if (amount >= 250) return 'That can fund a mobile clinic visit for an entire village.';
-    if (amount >= 100) return 'That can supply school materials for 10 children for a term.';
-    if (amount >= 50) return 'That can provide clean water access for a family for a month.';
+    if (amount >= 250)
+      return 'That can fund a mobile clinic visit for an entire village.';
+    if (amount >= 100)
+      return 'That can supply school materials for 10 children for a term.';
+    if (amount >= 50)
+      return 'That can provide clean water access for a family for a month.';
     return 'That can provide a week of school meals for a child.';
   }
 
   void _submit() {
-    if (_selectedPreset == null && _customAmountController.text.trim().isEmpty) {
+    if (_selectedPreset == null &&
+        _customAmountController.text.trim().isEmpty) {
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('Please select or enter a donation amount.')),
+        const SnackBar(
+            content: Text('Please select or enter a donation amount.')),
       );
       return;
     }
@@ -62,13 +67,16 @@ class _DonatePageState extends State<DonatePage> {
 
     return PageScaffold(
       title: 'Donate | Hopeworks Foundation',
-  description: "Make a one-time or monthly donation to support Hopeworks Foundation's education, healthcare, and relief programs.",
+      description:
+          "Make a one-time or monthly donation to support Hopeworks Foundation's education, healthcare, and relief programs.",
       body: ContentContainer(
-        padding: const EdgeInsets.symmetric(vertical: 100),
+        padding:
+            EdgeInsets.symmetric(vertical: 100, horizontal: isMobile ? 10 : 0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Text('Make a Donation', style: Theme.of(context).textTheme.displayMedium),
+            Text('Make a Donation',
+                style: Theme.of(context).textTheme.displayMedium),
             const SizedBox(height: 12),
             ConstrainedBox(
               constraints: const BoxConstraints(maxWidth: 560),
@@ -82,7 +90,10 @@ class _DonatePageState extends State<DonatePage> {
             const SizedBox(height: 40),
             ConstrainedBox(
               constraints: const BoxConstraints(maxWidth: 560),
-              child: _submitted ? _ThankYouCard(amount: _finalAmount ?? 0, isMonthly: _isMonthly) : _buildForm(isMobile),
+              child: _submitted
+                  ? _ThankYouCard(
+                      amount: _finalAmount ?? 0, isMonthly: _isMonthly)
+                  : _buildForm(isMobile),
             ),
           ],
         ),
@@ -112,13 +123,22 @@ class _DonatePageState extends State<DonatePage> {
               ),
               child: Row(
                 children: [
-                  Expanded(child: _ToggleButton(label: 'One-Time', selected: !_isMonthly, onTap: () => setState(() => _isMonthly = false))),
-                  Expanded(child: _ToggleButton(label: 'Monthly', selected: _isMonthly, onTap: () => setState(() => _isMonthly = true))),
+                  Expanded(
+                      child: _ToggleButton(
+                          label: 'One-Time',
+                          selected: !_isMonthly,
+                          onTap: () => setState(() => _isMonthly = false))),
+                  Expanded(
+                      child: _ToggleButton(
+                          label: 'Monthly',
+                          selected: _isMonthly,
+                          onTap: () => setState(() => _isMonthly = true))),
                 ],
               ),
             ),
             const SizedBox(height: 24),
-            Text('Choose an amount', style: Theme.of(context).textTheme.titleLarge),
+            Text('Choose an amount',
+                style: Theme.of(context).textTheme.titleLarge),
             const SizedBox(height: 14),
             Wrap(
               spacing: 12,
@@ -151,7 +171,10 @@ class _DonatePageState extends State<DonatePage> {
               const SizedBox(height: 10),
               Text(
                 _impactLine(_finalAmount!),
-                style: const TextStyle(color: AppColors.primary, fontSize: 13, fontWeight: FontWeight.w600),
+                style: const TextStyle(
+                    color: AppColors.primary,
+                    fontSize: 13,
+                    fontWeight: FontWeight.w600),
               ),
             ],
             const SizedBox(height: 28),
@@ -160,7 +183,9 @@ class _DonatePageState extends State<DonatePage> {
             TextFormField(
               controller: _nameController,
               decoration: const InputDecoration(labelText: 'Full name'),
-              validator: (val) => (val == null || val.trim().isEmpty) ? 'Please enter your name' : null,
+              validator: (val) => (val == null || val.trim().isEmpty)
+                  ? 'Please enter your name'
+                  : null,
             ),
             const SizedBox(height: 16),
             TextFormField(
@@ -168,8 +193,10 @@ class _DonatePageState extends State<DonatePage> {
               keyboardType: TextInputType.emailAddress,
               decoration: const InputDecoration(labelText: 'Email address'),
               validator: (val) {
-                if (val == null || val.trim().isEmpty) return 'Please enter your email';
-                if (!val.contains('@') || !val.contains('.')) return 'Please enter a valid email';
+                if (val == null || val.trim().isEmpty)
+                  return 'Please enter your email';
+                if (!val.contains('@') || !val.contains('.'))
+                  return 'Please enter a valid email';
                 return null;
               },
             ),
@@ -178,7 +205,8 @@ class _DonatePageState extends State<DonatePage> {
               width: double.infinity,
               child: ElevatedButton(
                 onPressed: _submit,
-                child: Text('Donate ${_finalAmount != null ? '\$${_finalAmount!}' : ''}${_isMonthly ? '/mo' : ''}'),
+                child: Text(
+                    'Donate ${_finalAmount != null ? '\$${_finalAmount!}' : ''}${_isMonthly ? '/mo' : ''}'),
               ),
             ),
           ],
@@ -192,7 +220,8 @@ class _ToggleButton extends StatelessWidget {
   final String label;
   final bool selected;
   final VoidCallback onTap;
-  const _ToggleButton({required this.label, required this.selected, required this.onTap});
+  const _ToggleButton(
+      {required this.label, required this.selected, required this.onTap});
 
   @override
   Widget build(BuildContext context) {
@@ -222,7 +251,8 @@ class _AmountChip extends StatelessWidget {
   final int amount;
   final bool selected;
   final VoidCallback onTap;
-  const _AmountChip({required this.amount, required this.selected, required this.onTap});
+  const _AmountChip(
+      {required this.amount, required this.selected, required this.onTap});
 
   @override
   Widget build(BuildContext context) {
@@ -236,7 +266,8 @@ class _AmountChip extends StatelessWidget {
         decoration: BoxDecoration(
           color: selected ? AppColors.primary : AppColors.surfaceMuted,
           borderRadius: BorderRadius.circular(10),
-          border: Border.all(color: selected ? AppColors.primary : AppColors.divider),
+          border: Border.all(
+              color: selected ? AppColors.primary : AppColors.divider),
         ),
         child: Text(
           '\$$amount',

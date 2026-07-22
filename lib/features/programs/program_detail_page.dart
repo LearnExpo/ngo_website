@@ -65,7 +65,8 @@ class ProgramDetailPage extends StatelessWidget {
       title: '${program.title} | Hopeworks Foundation',
       description: program.shortDescription,
       body: ContentContainer(
-        padding: const EdgeInsets.symmetric(vertical: 100),
+        padding:
+            EdgeInsets.symmetric(vertical: 100, horizontal: isMobile ? 10 : 0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [

@@ -52,40 +52,53 @@ class AboutPage extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text('Our Story',
-                        style: Theme.of(context).textTheme.displayMedium)
-                    .animate()
-                    .fadeIn(duration: 400.ms),
+                Padding(
+                  padding: isMobile
+                      ? const EdgeInsets.symmetric(horizontal: 10)
+                      : EdgeInsetsGeometry.zero,
+                  child: Text(
+                    'Our Story',
+                    style: Theme.of(context).textTheme.displayMedium,
+                  ).animate().fadeIn(duration: 400.ms),
+                ),
                 const SizedBox(height: 20),
                 ConstrainedBox(
                   constraints: const BoxConstraints(maxWidth: 760),
-                  child: Text(
-                    'Hopeworks Foundation started in 2015 with a single classroom in rural Kenya. '
-                    'Today we run 45 programs across 18 countries, spanning education, healthcare, '
-                    'clean water, and emergency relief. We believe lasting change happens when '
-                    'communities lead and we support — every program is built with local partners '
-                    'and designed to be sustainable long after our involvement ends.',
-                    style: Theme.of(context).textTheme.bodyLarge,
+                  child: Padding(
+                    padding: isMobile
+                        ? const EdgeInsets.symmetric(horizontal: 10)
+                        : EdgeInsetsGeometry.zero,
+                    child: Text(
+                      'Hopeworks Foundation started in 2015 with a single classroom in rural Kenya. '
+                      'Today we run 45 programs across 18 countries, spanning education, healthcare, '
+                      'clean water, and emergency relief. We believe lasting change happens when '
+                      'communities lead and we support — every program is built with local partners '
+                      'and designed to be sustainable long after our involvement ends.',
+                      style: Theme.of(context).textTheme.bodyLarge,
+                    ),
                   ),
                 ),
                 const SizedBox(height: 40),
                 isMobile
-                    ?const Column(
-                        children: [
-                          _ValueCard(
-                            icon: Icons.visibility,
-                            title: 'Our Vision',
-                            body:
-                                'A world where every community has the resources and opportunity to thrive.',
-                          ),
-                           SizedBox(height: 20),
-                          _ValueCard(
-                            icon: Icons.flag,
-                            title: 'Our Mission',
-                            body:
-                                'Deliver education, healthcare, and relief in partnership with local communities.',
-                          ),
-                        ],
+                    ? const Padding(
+                        padding: EdgeInsets.symmetric(horizontal: 10),
+                        child: Column(
+                          children: [
+                            _ValueCard(
+                              icon: Icons.visibility,
+                              title: 'Our Vision',
+                              body:
+                                  'A world where every community has the resources and opportunity to thrive.',
+                            ),
+                            SizedBox(height: 20),
+                            _ValueCard(
+                              icon: Icons.flag,
+                              title: 'Our Mission',
+                              body:
+                                  'Deliver education, healthcare, and relief in partnership with local communities.',
+                            ),
+                          ],
+                        ),
                       )
                     : const Row(
                         crossAxisAlignment: CrossAxisAlignment.start,

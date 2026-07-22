@@ -14,11 +14,15 @@ class GalleryItem {
 
 const List<GalleryItem> kGalleryItems = [
   GalleryItem('Classroom opening, Kenya', Icons.school, AppColors.primary),
-  GalleryItem('Mobile clinic visit, Nepal', Icons.health_and_safety, AppColors.secondary),
+  GalleryItem('Mobile clinic visit, Nepal', Icons.health_and_safety,
+      AppColors.secondary),
   GalleryItem('Well drilling, Mali', Icons.water_drop, AppColors.accent),
-  GalleryItem('Emergency relief, Philippines', Icons.emergency_share, AppColors.primaryDark),
-  GalleryItem('Vocational training, India', Icons.diversity_1, AppColors.success),
-  GalleryItem('School meal program, Uganda', Icons.restaurant, AppColors.secondaryDark),
+  GalleryItem('Emergency relief, Philippines', Icons.emergency_share,
+      AppColors.primaryDark),
+  GalleryItem(
+      'Vocational training, India', Icons.diversity_1, AppColors.success),
+  GalleryItem(
+      'School meal program, Uganda', Icons.restaurant, AppColors.secondaryDark),
   GalleryItem('Volunteer team, Peru', Icons.groups, AppColors.primaryLight),
   GalleryItem('Community meeting, Bangladesh', Icons.forum, AppColors.primary),
 ];
@@ -35,9 +39,11 @@ class GalleryPage extends StatelessWidget {
 
     return PageScaffold(
       title: 'About Us | Hopeworks Foundation',
-  description: "Learn about Hopeworks Foundation's mission, history, and the team delivering education, healthcare, and relief programs worldwide.",
+      description:
+          "Learn about Hopeworks Foundation's mission, history, and the team delivering education, healthcare, and relief programs worldwide.",
       body: ContentContainer(
-        padding: const EdgeInsets.symmetric(vertical: 100),
+        padding:
+            EdgeInsets.symmetric(vertical: 100, horizontal: isMobile ? 10 : 0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
@@ -63,7 +69,9 @@ class GalleryPage extends StatelessWidget {
                 return _GalleryTile(item: item)
                     .animate()
                     .fadeIn(delay: (index * 60).ms, duration: 350.ms)
-                    .scale(begin: const Offset(0.95, 0.95), end: const Offset(1, 1));
+                    .scale(
+                        begin: const Offset(0.95, 0.95),
+                        end: const Offset(1, 1));
               },
             ),
           ],
@@ -94,7 +102,8 @@ class _GalleryTile extends StatelessWidget {
               right: 0,
               bottom: 0,
               child: Container(
-                padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 8),
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 10, vertical: 8),
                 color: Colors.black.withOpacity(0.35),
                 child: Text(
                   item.caption,
