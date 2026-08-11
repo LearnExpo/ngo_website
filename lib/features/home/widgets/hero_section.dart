@@ -143,15 +143,14 @@ class _HeroVisual extends StatelessWidget {
                 .fadeIn(delay: 100.ms, duration: 500.ms)
                 .scale(begin: const Offset(0.8, 0.8), end: const Offset(1, 1)),
           ),
-          Transform.scale(
-              scale: 1.2,
-              child: Positioned(
-                top: 0,
-                child: Image.asset(
-                  "assets/images/flag.png",
-                  // fit: BoxFit.cover,
-                ),
-              )).animate().fadeIn(delay: 200.ms, duration: 500.ms),
+          Positioned(
+            top: 10,
+            child: Image.asset(
+              "assets/images/flag.png",
+              height: 400,
+              // fit: BoxFit.cover,
+            ),
+          )
           // const Icon(Icons.volunteer_activism, size: 140, color: Colors.white)
           //     .animate()
           //     .fadeIn(delay: 200.ms, duration: 500.ms),
