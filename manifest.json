@@ -1,11 +1,11 @@
 {
-    "name": "Hopeworks Foundation",
+    "name": "Vishwa Hindu Dharamarakshak Seva Samithi",
     "short_name": "Hopeworks",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#FDF8F3",
     "theme_color": "#E85D2C",
-    "description": "Hopeworks Foundation — nonprofit delivering education, healthcare, and disaster relief.",
+    "description": "Vishwa Hindu Dharamarakshak Seva Samithi — nonprofit delivering education, healthcare, and disaster relief.",
     "orientation": "portrait-primary",
     "prefer_related_applications": false,
     "icons": [
