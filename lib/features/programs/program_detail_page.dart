@@ -5,6 +5,8 @@ import '../../core/theme/app_colors.dart';
 import '../../data/programs_data.dart';
 import '../../shared/widgets/page_scaffold.dart';
 import '../../shared/widgets/responsive_layout.dart';
+import '../../core/localization/localized_text.dart';
+import '../../l10n/generated/app_localizations.dart';
 
 class ProgramDetailPage extends StatelessWidget {
   final String programId;
@@ -15,12 +17,14 @@ class ProgramDetailPage extends StatelessWidget {
     final program = findProgramById(programId);
     final width = MediaQuery.of(context).size.width;
     final isMobile = Breakpoints.isMobile(width);
+    final locale = Localizations.localeOf(context);
+    final l10n = AppLocalizations.of(context)!;
 
     Widget icon() => Container(
           width: 72,
           height: 72,
           decoration: BoxDecoration(
-            color: AppColors.primary.withOpacity(0.1),
+            color: AppColors.primary.withValues(alpha: 0.1),
             borderRadius: BorderRadius.circular(18),
           ),
           child: Icon(program!.icon, color: AppColors.primary, size: 36),
@@ -30,30 +34,30 @@ class ProgramDetailPage extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisSize: MainAxisSize.min,
           children: [
-            Text(program!.category,
+            Text(program!.category.resolve(locale),
                 style: const TextStyle(
                     color: AppColors.primary, fontWeight: FontWeight.w600)),
             const SizedBox(height: 6),
-            Text(program.title,
+            Text(program.title.resolve(locale),
                 style: Theme.of(context).textTheme.displayMedium),
           ],
         );
 
     if (program == null) {
       return PageScaffold(
-        title: '${program!.title} | Hopeworks Foundation',
-        description: program.shortDescription,
+        title: '${program!.title} | VHDRSS',
+        description: program.shortDescription.resolve(locale),
         body: ContentContainer(
           padding: const EdgeInsets.symmetric(vertical: 120),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text('Program not found',
+              Text(l10n.programNotFound,
                   style: Theme.of(context).textTheme.displayMedium),
               const SizedBox(height: 16),
               OutlinedButton(
                 onPressed: () => context.go('/programs'),
-                child: const Text('Back to Programs'),
+                child: Text(l10n.allPrograms),
               ),
             ],
           ),
@@ -62,8 +66,8 @@ class ProgramDetailPage extends StatelessWidget {
     }
 
     return PageScaffold(
-      title: '${program.title} | Hopeworks Foundation',
-      description: program.shortDescription,
+      title: '${program.title} | VHDRSS',
+      description: program.shortDescription.resolve(locale),
       body: ContentContainer(
         padding:
             EdgeInsets.symmetric(vertical: 100, horizontal: isMobile ? 10 : 0),
@@ -94,7 +98,7 @@ class ProgramDetailPage extends StatelessWidget {
                     ],
                   ),
             const SizedBox(height: 32),
-            Text(program.longDescription,
+            Text(program.longDescription.resolve(locale),
                 style: Theme.of(context).textTheme.bodyLarge),
             const SizedBox(height: 40),
             Container(
@@ -109,12 +113,12 @@ class ProgramDetailPage extends StatelessWidget {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text('${program.raisedAmount} raised',
+                      Text(l10n.raisedLabel(program.raisedAmount),
                           style: Theme.of(context)
                               .textTheme
                               .titleLarge
                               ?.copyWith(color: AppColors.primary)),
-                      Text('Goal: ${program.goalAmount}',
+                      Text(l10n.goalLabel(program.goalAmount),
                           style:
                               const TextStyle(color: AppColors.textSecondary)),
                     ],
@@ -133,7 +137,7 @@ class ProgramDetailPage extends StatelessWidget {
                   const SizedBox(height: 20),
                   ElevatedButton(
                     onPressed: () => context.go('/donate'),
-                    child: const Text('Support This Program'),
+                    child: Text(l10n.supportThisProgram),
                   ),
                 ],
               ),

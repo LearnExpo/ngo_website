@@ -1,11 +1,13 @@
+import '../../core/localization/localized_text.dart';
+
 class BlogPost {
   final String id;
-  final String title;
-  final String excerpt;
-  final String content;
+  final LocalizedText title;
+  final LocalizedText excerpt;
+  final LocalizedText content;
   final String author;
   final String date;
-  final String category;
+  final LocalizedText category;
   final int readMinutes;
 
   const BlogPost({

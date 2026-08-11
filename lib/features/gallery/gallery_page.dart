@@ -1,30 +1,84 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import '../../core/constants/breakpoints.dart';
+import '../../core/localization/localized_text.dart';
 import '../../core/theme/app_colors.dart';
+import '../../l10n/generated/app_localizations.dart';
 import '../../shared/widgets/page_scaffold.dart';
 import '../../shared/widgets/responsive_layout.dart';
 
 class GalleryItem {
-  final String caption;
+  final LocalizedText caption;
   final IconData icon;
   final Color color;
   const GalleryItem(this.caption, this.icon, this.color);
 }
 
 const List<GalleryItem> kGalleryItems = [
-  GalleryItem('Classroom opening, Kenya', Icons.school, AppColors.primary),
-  GalleryItem('Mobile clinic visit, Nepal', Icons.health_and_safety,
-      AppColors.secondary),
-  GalleryItem('Well drilling, Mali', Icons.water_drop, AppColors.accent),
-  GalleryItem('Emergency relief, Philippines', Icons.emergency_share,
-      AppColors.primaryDark),
   GalleryItem(
-      'Vocational training, India', Icons.diversity_1, AppColors.success),
+    {
+      'en': 'Flag Hoisting Ceremony',
+      'hi': 'ध्वजारोहण समारोह',
+    },
+    Icons.flag,
+    AppColors.primary,
+  ),
   GalleryItem(
-      'School meal program, Uganda', Icons.restaurant, AppColors.secondaryDark),
-  GalleryItem('Volunteer team, Peru', Icons.groups, AppColors.primaryLight),
-  GalleryItem('Community meeting, Bangladesh', Icons.forum, AppColors.primary),
+    {
+      'en': 'Religious and Cultural Programs',
+      'hi': 'धार्मिक एवं सांस्कृतिक कार्यक्रम',
+    },
+    Icons.local_library,
+    AppColors.secondary,
+  ),
+  GalleryItem(
+    {
+      'en': 'Hindu Dharma Awareness Program',
+      'hi': 'हिंदू धर्म जागरूकता कार्यक्रम',
+    },
+    Icons.local_library,
+    AppColors.accent,
+  ),
+  GalleryItem(
+    {
+      'en': 'Social Service Activities',
+      'hi': 'सामाजिक सेवा गतिविधियाँ',
+    },
+    Icons.local_library,
+    AppColors.primaryDark,
+  ),
+  GalleryItem(
+    {
+      'en': 'Community Service',
+      'hi': 'समाज सेवा',
+    },
+    Icons.local_library,
+    AppColors.success,
+  ),
+  GalleryItem(
+    {
+      'en': 'Cultural Heritage and Traditions',
+      'hi': 'सांस्कृतिक विरासत एवं परंपराएँ',
+    },
+    Icons.local_library,
+    AppColors.secondaryDark,
+  ),
+  GalleryItem(
+    {
+      'en': 'National and Religious Events',
+      'hi': 'राष्ट्रीय एवं धार्मिक आयोजन',
+    },
+    Icons.local_library,
+    AppColors.primaryLight,
+  ),
+  GalleryItem(
+    {
+      'en': 'Community Gathering',
+      'hi': 'सामुदायिक सभा',
+    },
+    Icons.local_library,
+    AppColors.primary,
+  ),
 ];
 
 class GalleryPage extends StatelessWidget {
@@ -36,23 +90,21 @@ class GalleryPage extends StatelessWidget {
     final isMobile = Breakpoints.isMobile(width);
     final isTablet = Breakpoints.isTablet(width);
     final columns = isMobile ? 2 : (isTablet ? 3 : 4);
+    final l10n = AppLocalizations.of(context)!;
 
     return PageScaffold(
-      title: 'About Us | Hopeworks Foundation',
-      description:
-          "Learn about Hopeworks Foundation's mission, history, and the team delivering education, healthcare, and relief programs worldwide.",
+      title: 'Gallery | VHDRSS',
+      description: "Photos from VHDRSS's programs around the world.",
       body: ContentContainer(
-        padding:
-            EdgeInsets.symmetric(vertical: 100, horizontal: isMobile ? 10 : 0),
+        padding: const EdgeInsets.symmetric(vertical: 100),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Text('Gallery', style: Theme.of(context).textTheme.displayMedium),
+            Text(l10n.galleryHeading,
+                style: Theme.of(context).textTheme.displayMedium),
             const SizedBox(height: 12),
-            Text(
-              'Moments from our programs around the world.',
-              style: Theme.of(context).textTheme.bodyLarge,
-            ),
+            Text(l10n.gallerySubheading,
+                style: Theme.of(context).textTheme.bodyLarge),
             const SizedBox(height: 48),
             GridView.builder(
               shrinkWrap: true,
@@ -87,12 +139,13 @@ class _GalleryTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final locale = Localizations.localeOf(context);
+
     return ClipRRect(
       borderRadius: BorderRadius.circular(14),
       child: Container(
-        // TODO Phase 3.5: replace this placeholder color block with
-        // Image.network('https://...') or Image.asset('assets/images/...')
-        // once real photos are available. Keep the caption overlay below.
+        // TODO Phase 3.5: replace this placeholder color block with a real
+        // Image.network(...) / Image.asset(...) once photos are available.
         color: item.color.withOpacity(0.85),
         child: Stack(
           children: [
@@ -106,7 +159,7 @@ class _GalleryTile extends StatelessWidget {
                     const EdgeInsets.symmetric(horizontal: 10, vertical: 8),
                 color: Colors.black.withOpacity(0.35),
                 child: Text(
-                  item.caption,
+                  item.caption.resolve(locale),
                   style: const TextStyle(color: Colors.white, fontSize: 11),
                   maxLines: 2,
                   overflow: TextOverflow.ellipsis,

@@ -1,9 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
+import 'package:ngo_website/l10n/generated/app_localizations.dart';
 import '../../core/constants/breakpoints.dart';
 import '../../core/theme/app_colors.dart';
 import '../../shared/widgets/page_scaffold.dart';
 import '../../shared/widgets/responsive_layout.dart';
+
+import 'dart:ui_web' as ui_web;
+
+import 'package:web/web.dart' as web;
 
 class ContactPage extends StatefulWidget {
   const ContactPage({super.key});
@@ -39,21 +44,22 @@ class _ContactPageState extends State<ContactPage> {
   Widget build(BuildContext context) {
     final width = MediaQuery.of(context).size.width;
     final isMobile = Breakpoints.isMobile(width);
+    final l10n = AppLocalizations.of(context)!;
 
     return PageScaffold(
-      title: 'Contact Us | Hopeworks Foundation',
+      title: 'Contact Us | VHDRSS',
       description:
-          'Get in touch with Hopeworks Foundation — questions, partnerships, and support.',
+          'Get in touch with VHDRSS — questions, partnerships, and support.',
       body: ContentContainer(
         padding:
             EdgeInsets.symmetric(vertical: 100, horizontal: isMobile ? 10 : 0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text('Contact Us',
+            Text(l10n.contactUs,
                 style: Theme.of(context).textTheme.displayMedium),
             const SizedBox(height: 12),
-            Text('We\'d love to hear from you.',
+            Text(l10n.contactUsSubtitle,
                 style: Theme.of(context).textTheme.bodyLarge),
             const SizedBox(height: 40),
             isMobile
@@ -84,6 +90,7 @@ class _ContactPageState extends State<ContactPage> {
   }
 
   Widget _buildForm() {
+    final l10n = AppLocalizations.of(context)!;
     return Container(
       padding: const EdgeInsets.all(28),
       decoration: BoxDecoration(
@@ -98,47 +105,53 @@ class _ContactPageState extends State<ContactPage> {
           children: [
             TextFormField(
               controller: _nameController,
-              decoration: const InputDecoration(labelText: 'Full name'),
+              decoration: InputDecoration(
+                labelText: l10n.fullName,
+              ),
               validator: (val) => (val == null || val.trim().isEmpty)
-                  ? 'Please enter your name'
+                  ? l10n.pleaseEnterName
                   : null,
             ),
             const SizedBox(height: 16),
             TextFormField(
               controller: _emailController,
               keyboardType: TextInputType.emailAddress,
-              decoration: const InputDecoration(labelText: 'Email address'),
+              decoration: InputDecoration(
+                labelText: l10n.emailAddress,
+              ),
               validator: (val) {
-                if (val == null || val.trim().isEmpty)
-                  return 'Please enter your email';
-                if (!val.contains('@') || !val.contains('.'))
-                  return 'Please enter a valid email';
+                if (val == null || val.trim().isEmpty) {
+                  return l10n.pleaseEnterEmail;
+                }
+                if (!val.contains('@') || !val.contains('.')) {
+                  return l10n.pleaseEnterValidEmail;
+                }
                 return null;
               },
             ),
             const SizedBox(height: 16),
             TextFormField(
               controller: _subjectController,
-              decoration: const InputDecoration(labelText: 'Subject'),
+              decoration: InputDecoration(labelText: l10n.subject),
               validator: (val) => (val == null || val.trim().isEmpty)
-                  ? 'Please enter a subject'
+                  ? l10n.pleaseEnterSubject
                   : null,
             ),
             const SizedBox(height: 16),
             TextFormField(
               controller: _messageController,
               maxLines: 5,
-              decoration: const InputDecoration(
-                  labelText: 'Message', alignLabelWithHint: true),
+              decoration: InputDecoration(
+                  labelText: l10n.message, alignLabelWithHint: true),
               validator: (val) => (val == null || val.trim().isEmpty)
-                  ? 'Please enter a message'
+                  ? l10n.pleaseEnterMessage
                   : null,
             ),
             const SizedBox(height: 24),
             SizedBox(
               width: double.infinity,
               child: ElevatedButton(
-                  onPressed: _submit, child: const Text('Send Message')),
+                  onPressed: _submit, child: Text(l10n.sendMessage)),
             ),
           ],
         ),
@@ -147,6 +160,8 @@ class _ContactPageState extends State<ContactPage> {
   }
 
   Widget _buildThankYou(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
+    final name = _nameController.text.trim();
     return Container(
       padding: const EdgeInsets.all(40),
       decoration: BoxDecoration(
@@ -160,12 +175,11 @@ class _ContactPageState extends State<ContactPage> {
               .animate()
               .scale(duration: 400.ms, curve: Curves.easeOutBack),
           const SizedBox(height: 20),
-          Text('Message Sent',
+          Text(l10n.messageSent,
               style: Theme.of(context).textTheme.headlineLarge),
           const SizedBox(height: 12),
           Text(
-            'Thanks for reaching out, ${_nameController.text.trim().isEmpty ? '' : _nameController.text.trim()}. '
-            'Our team would normally reply within 1-2 business days.',
+            l10n.messageSentDescription(name),
             textAlign: TextAlign.center,
             style: Theme.of(context).textTheme.bodyMedium,
           ),
@@ -175,6 +189,7 @@ class _ContactPageState extends State<ContactPage> {
   }
 
   Widget _buildInfoPanel(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
     return Container(
       padding: const EdgeInsets.all(28),
       decoration: BoxDecoration(
@@ -184,13 +199,11 @@ class _ContactPageState extends State<ContactPage> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          _InfoRow(
-              icon: Icons.location_on,
-              label: '123 Hope Street, San Francisco, CA'),
+          _InfoRow(icon: Icons.location_on, label: l10n.address),
           const SizedBox(height: 20),
-          _InfoRow(icon: Icons.email, label: 'contact@hopeworks.org'),
+          const _InfoRow(icon: Icons.email, label: 'contact@vhdrss.in'),
           const SizedBox(height: 20),
-          _InfoRow(icon: Icons.phone, label: '+1 (555) 012-3456'),
+          const _InfoRow(icon: Icons.phone, label: '+91  855330 2195'),
           const SizedBox(height: 28),
           // Map placeholder — swap for a real embedded map (e.g. google_maps_flutter
           // or a static map image) once you have an address to pin.
@@ -198,15 +211,51 @@ class _ContactPageState extends State<ContactPage> {
             height: 160,
             width: double.infinity,
             decoration: BoxDecoration(
-              color: AppColors.divider,
               borderRadius: BorderRadius.circular(14),
             ),
-            child: const Center(
-              child: Icon(Icons.map, color: AppColors.textSecondary, size: 40),
-            ),
-          ),
+            clipBehavior: Clip.antiAlias,
+            child: const GoogleMapView(),
+          )
         ],
       ),
+    );
+  }
+}
+
+class GoogleMapView extends StatefulWidget {
+  const GoogleMapView({super.key});
+
+  @override
+  State<GoogleMapView> createState() => _GoogleMapViewState();
+}
+
+class _GoogleMapViewState extends State<GoogleMapView> {
+  final String viewType = 'google-map-view';
+
+  @override
+  void initState() {
+    super.initState();
+
+    ui_web.platformViewRegistry.registerViewFactory(
+      viewType,
+      (int viewId) {
+        final String placeQuery = Uri.encodeComponent(
+          'Vishva hindu dharm Rakshak Seva Samiti head office, Bengaluru',
+        );
+
+        return web.HTMLIFrameElement()
+          ..src = 'https://www.google.com/maps?q=$placeQuery&output=embed'
+          ..style.border = '0'
+          ..style.width = '100%'
+          ..style.height = '100%';
+      },
+    );
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return const HtmlElementView(
+      viewType: 'google-map-view',
     );
   }
 }

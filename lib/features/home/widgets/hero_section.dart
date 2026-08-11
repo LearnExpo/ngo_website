@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:go_router/go_router.dart';
+import 'package:ngo_website/l10n/generated/app_localizations.dart';
 import '../../../core/constants/breakpoints.dart';
 import '../../../core/theme/app_colors.dart';
 import '../../../shared/widgets/responsive_layout.dart';
@@ -12,6 +13,7 @@ class HeroSection extends StatelessWidget {
   Widget build(BuildContext context) {
     final width = MediaQuery.of(context).size.width;
     final isMobile = Breakpoints.isMobile(width);
+    final l10n = AppLocalizations.of(context)!;
 
     return Container(
       width: double.infinity,
@@ -34,23 +36,22 @@ class HeroSection extends StatelessWidget {
                   _Badge(),
                   const SizedBox(height: 20),
                   Text(
-                    'Together, We\nRebuild Hope',
+                    l10n.heroTitle,
                     textAlign: isMobile ? TextAlign.center : TextAlign.start,
                     style: Theme.of(context)
                         .textTheme
                         .displayLarge
                         ?.copyWith(fontSize: isMobile ? 38 : 56),
-                  ).animate().fadeIn(duration: 500.ms).slideY(
-                      begin: 0.15, end: 0, duration: 500.ms),
+                  )
+                      .animate()
+                      .fadeIn(duration: 500.ms)
+                      .slideY(begin: 0.15, end: 0, duration: 500.ms),
                   const SizedBox(height: 20),
                   ConstrainedBox(
                     constraints: const BoxConstraints(maxWidth: 480),
                     child: Text(
-                      'We deliver education, healthcare, and disaster relief '
-                      'to communities that need it most — powered by donors '
-                      'and volunteers like you.',
-                      textAlign:
-                          isMobile ? TextAlign.center : TextAlign.start,
+                      l10n.heroSubtitle,
+                      textAlign: isMobile ? TextAlign.center : TextAlign.start,
                       style: Theme.of(context).textTheme.bodyLarge,
                     ),
                   ).animate().fadeIn(delay: 150.ms, duration: 500.ms),
@@ -64,11 +65,11 @@ class HeroSection extends StatelessWidget {
                       ElevatedButton.icon(
                         onPressed: () => context.go('/donate'),
                         icon: const Icon(Icons.favorite, size: 18),
-                        label: const Text('Donate Now'),
+                        label: Text(l10n.heroDonateBtn),
                       ),
                       OutlinedButton(
                         onPressed: () => context.go('/programs'),
-                        child: const Text('See Our Programs'),
+                        child: Text(l10n.heroProgramsBtn),
                       ),
                     ],
                   ).animate().fadeIn(delay: 300.ms, duration: 500.ms),
@@ -91,6 +92,7 @@ class HeroSection extends StatelessWidget {
 class _Badge extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 8),
       decoration: BoxDecoration(
@@ -99,12 +101,12 @@ class _Badge extends StatelessWidget {
       ),
       child: Row(
         mainAxisSize: MainAxisSize.min,
-        children: const [
-          Icon(Icons.circle, size: 8, color: AppColors.success),
-          SizedBox(width: 8),
+        children: [
+          const Icon(Icons.circle, size: 8, color: AppColors.success),
+          const SizedBox(width: 8),
           Text(
-            '12,000+ lives impacted since 2015',
-            style: TextStyle(fontSize: 13, fontWeight: FontWeight.w600),
+            l10n.heroBadge,
+            style: const TextStyle(fontSize: 13, fontWeight: FontWeight.w600),
           ),
         ],
       ),
@@ -124,15 +126,35 @@ class _HeroVisual extends StatelessWidget {
         children: [
           Container(
             decoration: BoxDecoration(
-              gradient: AppColors.heroGradient,
+              gradient: AppColors.heroGradient.withOpacity(0.9),
               borderRadius: BorderRadius.circular(32),
             ),
-          ).animate().fadeIn(duration: 600.ms).scale(
-              begin: const Offset(0.9, 0.9), end: const Offset(1, 1)),
-          const Icon(Icons.volunteer_activism,
-                  size: 140, color: Colors.white)
+          )
               .animate()
-              .fadeIn(delay: 200.ms, duration: 500.ms),
+              .fadeIn(duration: 600.ms)
+              .scale(begin: const Offset(0.9, 0.9), end: const Offset(1, 1)),
+          Positioned(
+            top: 10,
+            left: 100,
+            child: const CircleAvatar(
+                    radius: 140,
+                    backgroundColor: Color.fromARGB(255, 175, 214, 247))
+                .animate()
+                .fadeIn(delay: 100.ms, duration: 500.ms)
+                .scale(begin: const Offset(0.8, 0.8), end: const Offset(1, 1)),
+          ),
+          Transform.scale(
+              scale: 1.2,
+              child: Positioned(
+                top: 0,
+                child: Image.asset(
+                  "assets/images/flag.png",
+                  // fit: BoxFit.cover,
+                ),
+              )).animate().fadeIn(delay: 200.ms, duration: 500.ms),
+          // const Icon(Icons.volunteer_activism, size: 140, color: Colors.white)
+          //     .animate()
+          //     .fadeIn(delay: 200.ms, duration: 500.ms),
         ],
       ),
     );

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
+import 'package:ngo_website/l10n/generated/app_localizations.dart';
 import 'package:visibility_detector/visibility_detector.dart';
 import '../../../core/constants/breakpoints.dart';
 import '../../../core/theme/app_colors.dart';
@@ -12,12 +13,12 @@ class ImpactStat {
   const ImpactStat(this.value, this.label, this.icon);
 }
 
-const List<ImpactStat> kImpactStats = [
-  ImpactStat('12,000+', 'Lives Impacted', Icons.groups),
-  ImpactStat('45', 'Programs Delivered', Icons.diversity_3),
-  ImpactStat('18', 'Countries Reached', Icons.public),
-  ImpactStat('\$2.4M', 'Funds Raised', Icons.savings),
-];
+List<ImpactStat> buildImpactStats(AppLocalizations l10n) => [
+      ImpactStat('12,000+', l10n.statLivesImpacted, Icons.groups),
+      ImpactStat('45', l10n.statProgramsDelivered, Icons.diversity_3),
+      ImpactStat('4', l10n.statCountriesReached, Icons.public),
+      ImpactStat('₹2.4M', l10n.statFundsRaised, Icons.savings),
+    ];
 
 class ImpactStatsSection extends StatefulWidget {
   const ImpactStatsSection({super.key});
@@ -49,7 +50,8 @@ class _ImpactStatsSectionState extends State<ImpactStatsSection> {
             alignment: WrapAlignment.spaceBetween,
             runSpacing: 32,
             children: [
-              for (final stat in kImpactStats)
+              for (final stat
+                  in buildImpactStats(AppLocalizations.of(context)!))
                 SizedBox(
                   width: isMobile ? (width - 80) / 2 : 220,
                   child: _StatCard(stat: stat, animate: _visible),

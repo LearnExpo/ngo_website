@@ -1,7 +1,11 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:ngo_website/shared/widgets/wrapper.dart';
 import '../../core/constants/breakpoints.dart';
 import '../../core/theme/app_colors.dart';
+import '../../l10n/generated/app_localizations.dart';
 import 'nav_bar.dart';
 import 'responsive_layout.dart';
 
@@ -29,7 +33,7 @@ class AppFooter extends StatelessWidget {
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      _AboutBlurb(isMobile: true),
+                      const _AboutBlurb(isMobile: true),
                       const SizedBox(height: 32),
                       _QuickLinks(),
                       const SizedBox(height: 32),
@@ -42,7 +46,8 @@ class AppFooter extends StatelessWidget {
                   Row(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Expanded(flex: 2, child: _AboutBlurb(isMobile: false)),
+                      const Expanded(
+                          flex: 2, child: _AboutBlurb(isMobile: false)),
                       const SizedBox(width: 40),
                       Expanded(child: _QuickLinks()),
                       const SizedBox(width: 40),
@@ -53,7 +58,7 @@ class AppFooter extends StatelessWidget {
                 const Divider(color: Colors.white24),
                 const SizedBox(height: 20),
                 Text(
-                  '© ${DateTime.now().year} Hopeworks Foundation. All rights reserved.',
+                  '© ${DateTime.now().year} ${AppLocalizations.of(context)!.navName}. ${AppLocalizations.of(context)!.footerCopyright}',
                   style: const TextStyle(color: Colors.white54, fontSize: 13),
                 ),
               ],
@@ -71,6 +76,7 @@ class _AboutBlurb extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -83,12 +89,14 @@ class _AboutBlurb extends StatelessWidget {
                 gradient: AppColors.heroGradient,
                 shape: BoxShape.circle,
               ),
-              child: const Icon(Icons.favorite, color: Colors.white, size: 18),
+              child:
+                  Image.asset("assets/images/logo.png", width: 32, height: 32),
+              // child: const Icon(Icons.favorite, color: Colors.white, size: 18),
             ),
             const SizedBox(width: 10),
-            const Text(
-              'Hopeworks',
-              style: TextStyle(
+            Text(
+              l10n.navName,
+              style: const TextStyle(
                 color: Colors.white,
                 fontSize: 18,
                 fontWeight: FontWeight.w700,
@@ -99,15 +107,15 @@ class _AboutBlurb extends StatelessWidget {
         const SizedBox(height: 16),
         SizedBox(
           width: isMobile ? double.infinity : 320,
-          child: const Text(
-            'Working alongside communities to deliver education, healthcare, '
-            'and disaster relief where it\'s needed most.',
-            style: TextStyle(color: Colors.white70, fontSize: 14, height: 1.6),
+          child: Text(
+            l10n.tagLine,
+            style: const TextStyle(
+                color: Colors.white70, fontSize: 14, height: 1.6),
           ),
         ),
         const SizedBox(height: 20),
-        Row(
-          children: const [
+        const Row(
+          children: [
             _SocialIcon(Icons.facebook),
             _SocialIcon(Icons.alternate_email),
             _SocialIcon(Icons.camera_alt_outlined),
@@ -139,19 +147,21 @@ class _SocialIcon extends StatelessWidget {
 class _QuickLinks extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
+    final navItems = buildNavItems(l10n);
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const Text(
-          'Quick Links',
-          style: TextStyle(
+        Text(
+          l10n.footerQuickLinks,
+          style: const TextStyle(
             color: Colors.white,
             fontSize: 15,
             fontWeight: FontWeight.w600,
           ),
         ),
         const SizedBox(height: 16),
-        for (final item in kNavItems)
+        for (final item in navItems)
           Padding(
             padding: const EdgeInsets.only(bottom: 10),
             child: InkWell(
@@ -187,24 +197,24 @@ class _NewsletterSignupState extends State<_NewsletterSignup> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const Text(
-          'Stay Updated',
-          style: TextStyle(
+        Text(
+          AppLocalizations.of(context)!.footerStayUpdated,
+          style: const TextStyle(
             color: Colors.white,
             fontSize: 15,
             fontWeight: FontWeight.w600,
           ),
         ),
         const SizedBox(height: 16),
-        const Text(
-          'Get our latest news and impact stories.',
-          style: TextStyle(color: Colors.white70, fontSize: 14),
+        Text(
+          AppLocalizations.of(context)!.footerNewsletterBody,
+          style: const TextStyle(color: Colors.white70, fontSize: 14),
         ),
         const SizedBox(height: 12),
         if (_submitted)
-          const Text(
-            'Thanks for subscribing! 🎉',
-            style: TextStyle(color: AppColors.accent, fontSize: 14),
+          Text(
+            AppLocalizations.of(context)!.footerThanks,
+            style: const TextStyle(color: AppColors.accent, fontSize: 14),
           )
         else
           Row(
@@ -214,7 +224,7 @@ class _NewsletterSignupState extends State<_NewsletterSignup> {
                   controller: _controller,
                   style: const TextStyle(color: Colors.white, fontSize: 14),
                   decoration: InputDecoration(
-                    hintText: 'Your email',
+                    hintText: AppLocalizations.of(context)!.footerEmailHint,
                     hintStyle: const TextStyle(color: Colors.white38),
                     filled: true,
                     fillColor: Colors.white12,

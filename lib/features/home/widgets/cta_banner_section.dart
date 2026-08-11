@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import '../../../core/constants/breakpoints.dart';
 import '../../../core/theme/app_colors.dart';
+import '../../../l10n/generated/app_localizations.dart';
 import '../../../shared/widgets/responsive_layout.dart';
 
 class CtaBannerSection extends StatelessWidget {
@@ -11,6 +12,7 @@ class CtaBannerSection extends StatelessWidget {
   Widget build(BuildContext context) {
     final width = MediaQuery.of(context).size.width;
     final isMobile = Breakpoints.isMobile(width);
+    final l10n = AppLocalizations.of(context)!;
 
     return Container(
       width: double.infinity,
@@ -20,7 +22,7 @@ class CtaBannerSection extends StatelessWidget {
         child: Column(
           children: [
             Text(
-              'Ready to Make a Difference?',
+              l10n.ctaHeading,
               textAlign: TextAlign.center,
               style: Theme.of(context).textTheme.displayMedium?.copyWith(
                     color: Colors.white,
@@ -31,10 +33,10 @@ class CtaBannerSection extends StatelessWidget {
             ConstrainedBox(
               constraints: const BoxConstraints(maxWidth: 520),
               child: Text(
-                'Whether it\'s a one-time gift or your time as a volunteer, '
-                'every contribution moves us closer to the communities that need it.',
+                l10n.ctaBody,
                 textAlign: TextAlign.center,
-                style: TextStyle(color: Colors.white.withOpacity(0.9), fontSize: 16),
+                style: TextStyle(
+                    color: Colors.white.withValues(alpha: 0.9), fontSize: 16),
               ),
             ),
             const SizedBox(height: 32),
@@ -49,7 +51,7 @@ class CtaBannerSection extends StatelessWidget {
                     foregroundColor: AppColors.primary,
                   ),
                   onPressed: () => context.go('/donate'),
-                  child: const Text('Donate Now'),
+                  child: Text(l10n.heroDonateBtn),
                 ),
                 OutlinedButton(
                   style: OutlinedButton.styleFrom(
@@ -57,7 +59,7 @@ class CtaBannerSection extends StatelessWidget {
                     side: const BorderSide(color: Colors.white, width: 1.5),
                   ),
                   onPressed: () => context.go('/volunteer'),
-                  child: const Text('Become a Volunteer'),
+                  child: Text(l10n.ctaVolunteerBtn),
                 ),
               ],
             ),

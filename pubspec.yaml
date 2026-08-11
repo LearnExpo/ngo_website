@@ -10,6 +10,9 @@ dependencies:
   flutter:
     sdk: flutter
 
+  flutter_localizations:
+    sdk: flutter
+  intl: 
   # Routing
   go_router: ^14.2.0
 
@@ -22,6 +25,9 @@ dependencies:
   # Scroll-triggered animations (used from Phase 2 onward)
   flutter_animate: ^4.5.0
   visibility_detector: ^0.4.0+2
+  web: ^1.1.1
+ 
+ 
 
 dev_dependencies:
   flutter_test:
@@ -29,9 +35,11 @@ dev_dependencies:
   flutter_lints: ^4.0.0
 
 flutter:
+  generate: true 
   uses-material-design: true
 
   # Uncomment and add real asset paths once images are added in Phase 2/3
-  # assets:
-  #   - assets/images/
-  #   - assets/icons/
+  assets:
+    - assets/images/
+    - assets/team/
+    - assets/icons/

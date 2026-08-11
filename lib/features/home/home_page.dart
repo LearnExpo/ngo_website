@@ -12,8 +12,9 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const PageScaffold(
-      title: 'About Us | Hopeworks Foundation',
-  description: "Learn about Hopeworks Foundation's mission, history, and the team delivering education, healthcare, and relief programs worldwide.",
+      title: 'About Us | VHDRSS',
+      description:
+          "Learn about VHDRSS's mission, history, and the team delivering education, healthcare, and relief programs worldwide.",
       body: Column(
         children: [
           HeroSection(),

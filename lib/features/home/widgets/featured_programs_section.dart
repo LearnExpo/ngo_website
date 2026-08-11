@@ -3,37 +3,46 @@ import 'package:flutter_animate/flutter_animate.dart';
 import 'package:go_router/go_router.dart';
 import '../../../core/constants/breakpoints.dart';
 import '../../../core/theme/app_colors.dart';
+import '../../../l10n/generated/app_localizations.dart';
 import '../../../shared/widgets/responsive_layout.dart';
 
 class FeaturedProgram {
-  final String title;
-  final String description;
+  final String titleKey;
+  final String descKey;
   final IconData icon;
-  final double progress; // 0..1, funding/goal progress
-  const FeaturedProgram(
-      this.title, this.description, this.icon, this.progress);
+  final double progress;
+  const FeaturedProgram(this.titleKey, this.descKey, this.icon, this.progress);
 }
 
 const List<FeaturedProgram> kFeaturedPrograms = [
+  FeaturedProgram('fpDharmaTitle', 'fpDharmaDesc', Icons.school, 0.72),
   FeaturedProgram(
-    'Education Access',
-    'Building classrooms and supplying learning materials for children in underserved regions.',
-    Icons.school,
-    0.72,
-  ),
+      'fpNarayanTitle', 'fpNarayanDesc', Icons.health_and_safety, 0.58),
   FeaturedProgram(
-    'Healthcare Outreach',
-    'Mobile clinics and essential medicine delivery to remote communities.',
-    Icons.health_and_safety,
-    0.58,
-  ),
-  FeaturedProgram(
-    'Disaster Relief',
-    'Rapid-response emergency aid — food, water, and shelter after crises.',
-    Icons.emergency_share,
-    0.85,
-  ),
+      'fpEducationTitle', 'fpEducationDesc', Icons.emergency_share, 0.85),
 ];
+
+// Resolves a translated string from AppLocalizations using its field name
+// as a string key. Keeps FeaturedProgram data-driven without hardcoding
+// three separate switch statements.
+String _t(AppLocalizations l10n, String key) {
+  switch (key) {
+    case 'fpDharmaTitle':
+      return l10n.fpDharmaTitle;
+    case 'fpDharmaDesc':
+      return l10n.fpDharmaDesc;
+    case 'fpNarayanTitle':
+      return l10n.fpNarayanTitle;
+    case 'fpNarayanDesc':
+      return l10n.fpNarayanDesc;
+    case 'fpEducationTitle':
+      return l10n.fpEducationTitle;
+    case 'fpEducationDesc':
+      return l10n.fpEducationDesc;
+    default:
+      return key;
+  }
+}
 
 class FeaturedProgramsSection extends StatelessWidget {
   const FeaturedProgramsSection({super.key});
@@ -44,6 +53,7 @@ class FeaturedProgramsSection extends StatelessWidget {
     final isMobile = Breakpoints.isMobile(width);
     final isTablet = Breakpoints.isTablet(width);
     final columns = isMobile ? 1 : (isTablet ? 2 : 3);
+    final l10n = AppLocalizations.of(context)!;
 
     return Container(
       padding: const EdgeInsets.symmetric(vertical: 80),
@@ -51,11 +61,11 @@ class FeaturedProgramsSection extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Text('Our Programs',
+            Text(l10n.featuredProgramsHeading,
                 style: Theme.of(context).textTheme.displayMedium),
             const SizedBox(height: 12),
             Text(
-              'Every donation and volunteer hour goes directly into one of these initiatives.',
+              l10n.featuredProgramsSubheading,
               textAlign: TextAlign.center,
               style: Theme.of(context).textTheme.bodyLarge,
             ),
@@ -72,7 +82,7 @@ class FeaturedProgramsSection extends StatelessWidget {
               ),
               itemBuilder: (context, index) {
                 final program = kFeaturedPrograms[index];
-                return _ProgramCard(program: program)
+                return _ProgramCard(program: program, l10n: l10n)
                     .animate()
                     .fadeIn(delay: (index * 120).ms, duration: 500.ms)
                     .slideY(begin: 0.15, end: 0);
@@ -81,7 +91,7 @@ class FeaturedProgramsSection extends StatelessWidget {
             const SizedBox(height: 32),
             TextButton(
               onPressed: () => context.go('/programs'),
-              child: const Text('View All Programs  →'),
+              child: Text('${l10n.viewAllPrograms}  →'),
             ),
           ],
         ),
@@ -92,7 +102,8 @@ class FeaturedProgramsSection extends StatelessWidget {
 
 class _ProgramCard extends StatelessWidget {
   final FeaturedProgram program;
-  const _ProgramCard({required this.program});
+  final AppLocalizations l10n;
+  const _ProgramCard({required this.program, required this.l10n});
 
   @override
   Widget build(BuildContext context) {
@@ -110,19 +121,18 @@ class _ProgramCard extends StatelessWidget {
             width: 52,
             height: 52,
             decoration: BoxDecoration(
-              color: AppColors.primary.withOpacity(0.1),
+              color: AppColors.primary.withValues(alpha: 0.1),
               borderRadius: BorderRadius.circular(14),
             ),
             child: Icon(program.icon, color: AppColors.primary, size: 26),
           ),
           const SizedBox(height: 20),
-          Text(program.title, style: Theme.of(context).textTheme.titleLarge),
+          Text(_t(l10n, program.titleKey),
+              style: Theme.of(context).textTheme.titleLarge),
           const SizedBox(height: 10),
           Expanded(
-            child: Text(
-              program.description,
-              style: Theme.of(context).textTheme.bodyMedium,
-            ),
+            child: Text(_t(l10n, program.descKey),
+                style: Theme.of(context).textTheme.bodyMedium),
           ),
           const SizedBox(height: 16),
           ClipRRect(
@@ -136,8 +146,9 @@ class _ProgramCard extends StatelessWidget {
           ),
           const SizedBox(height: 8),
           Text(
-            '${(program.progress * 100).toInt()}% of goal funded',
-            style: const TextStyle(fontSize: 12, color: AppColors.textSecondary),
+            l10n.percentFunded((program.progress * 100).toInt()),
+            style:
+                const TextStyle(fontSize: 12, color: AppColors.textSecondary),
           ),
         ],
       ),

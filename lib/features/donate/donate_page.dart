@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
+import 'package:ngo_website/shared/widgets/wrapper.dart';
 import '../../core/constants/breakpoints.dart';
 import '../../core/theme/app_colors.dart';
 import '../../shared/widgets/page_scaffold.dart';
@@ -37,12 +38,15 @@ class _DonatePageState extends State<DonatePage> {
   }
 
   String _impactLine(int amount) {
-    if (amount >= 250)
+    if (amount >= 250) {
       return 'That can fund a mobile clinic visit for an entire village.';
-    if (amount >= 100)
+    }
+    if (amount >= 100) {
       return 'That can supply school materials for 10 children for a term.';
-    if (amount >= 50)
+    }
+    if (amount >= 50) {
       return 'That can provide clean water access for a family for a month.';
+    }
     return 'That can provide a week of school meals for a child.';
   }
 
@@ -66,9 +70,9 @@ class _DonatePageState extends State<DonatePage> {
     final isMobile = Breakpoints.isMobile(width);
 
     return PageScaffold(
-      title: 'Donate | Hopeworks Foundation',
+      title: 'Donate | VHDRSS',
       description:
-          "Make a one-time or monthly donation to support Hopeworks Foundation's education, healthcare, and relief programs.",
+          "Make a one-time or monthly donation to support VHDRSS's education, healthcare, and relief programs.",
       body: ContentContainer(
         padding:
             EdgeInsets.symmetric(vertical: 100, horizontal: isMobile ? 10 : 0),
@@ -93,7 +97,7 @@ class _DonatePageState extends State<DonatePage> {
               child: _submitted
                   ? _ThankYouCard(
                       amount: _finalAmount ?? 0, isMonthly: _isMonthly)
-                  : _buildForm(isMobile),
+                  : ComingSoonWrapper(child: _buildForm(isMobile)),
             ),
           ],
         ),
@@ -161,7 +165,7 @@ class _DonatePageState extends State<DonatePage> {
               keyboardType: TextInputType.number,
               decoration: const InputDecoration(
                 labelText: 'Custom amount (USD)',
-                prefixText: '\$ ',
+                prefixText: '\₹ ',
               ),
               onChanged: (val) => setState(() {
                 if (val.trim().isNotEmpty) _selectedPreset = null;
@@ -193,10 +197,12 @@ class _DonatePageState extends State<DonatePage> {
               keyboardType: TextInputType.emailAddress,
               decoration: const InputDecoration(labelText: 'Email address'),
               validator: (val) {
-                if (val == null || val.trim().isEmpty)
+                if (val == null || val.trim().isEmpty) {
                   return 'Please enter your email';
-                if (!val.contains('@') || !val.contains('.'))
+                }
+                if (!val.contains('@') || !val.contains('.')) {
                   return 'Please enter a valid email';
+                }
                 return null;
               },
             ),
@@ -206,7 +212,7 @@ class _DonatePageState extends State<DonatePage> {
               child: ElevatedButton(
                 onPressed: _submit,
                 child: Text(
-                    'Donate ${_finalAmount != null ? '\$${_finalAmount!}' : ''}${_isMonthly ? '/mo' : ''}'),
+                    'Donate ${_finalAmount != null ? '\₹${_finalAmount!}' : ''}${_isMonthly ? '/mo' : ''}'),
               ),
             ),
           ],
@@ -270,7 +276,7 @@ class _AmountChip extends StatelessWidget {
               color: selected ? AppColors.primary : AppColors.divider),
         ),
         child: Text(
-          '\$$amount',
+          '\₹$amount',
           style: TextStyle(
             color: selected ? Colors.white : AppColors.textPrimary,
             fontWeight: FontWeight.w700,
@@ -304,7 +310,7 @@ class _ThankYouCard extends StatelessWidget {
           Text('Thank You!', style: Theme.of(context).textTheme.headlineLarge),
           const SizedBox(height: 12),
           Text(
-            'Your ${isMonthly ? 'monthly' : 'one-time'} donation of \$$amount means the world '
+            'Your ${isMonthly ? 'monthly' : 'one-time'} donation of \₹$amount means the world '
             'to the communities we serve. A confirmation would normally be emailed to you here.',
             textAlign: TextAlign.center,
             style: Theme.of(context).textTheme.bodyMedium,

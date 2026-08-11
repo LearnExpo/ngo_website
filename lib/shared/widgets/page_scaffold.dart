@@ -14,9 +14,9 @@ class PageScaffold extends StatefulWidget {
     super.key,
     required this.body,
     this.title =
-        'Hopeworks Foundation — Nonprofit for Education, Healthcare & Disaster Relief',
+        'VHDRSS — Nonprofit for Education, Healthcare & Disaster Relief',
     this.description =
-        'Hopeworks Foundation is a nonprofit delivering education, healthcare, and disaster relief to communities in need.',
+        'VHDRSS is a nonprofit delivering education, healthcare, and disaster relief to communities in need.',
   });
 
   @override

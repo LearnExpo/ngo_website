@@ -1,0 +1,243 @@
+{
+  "@@locale": "en",
+
+  "name": "Vishwa Hindu \nDharamarakshak Seva Samithi",
+  "navName": "Vishwa Hindu Dharamarakshak Seva Samithi",
+
+  "address": "Door No. 173, First Floor \nS.L.I.G., 15th Block, 5th Phase \nYelahanka New Town \nBengaluru, Karnataka – 560064 \nIndia",
+
+  "tagLine": "Protection of Dharma • Service to the Nation • Welfare of Humanity",
+
+
+
+
+
+  "navHome": "Home",
+  "navAbout": "About",
+  "navPrograms": "Programs",
+  "navEvents": "Events",
+  "navGallery": "Gallery",
+  "navBlog": "Blog",
+  "navContact": "Contact",
+  "navDonate": "Donate",
+  "languageLabel": "Language",
+
+  "heroBadge": "12,000+ lives impacted since 2014",
+  "heroTitle": "Protecting Dharma,\nServing Humanity",
+  "heroSubtitle": "Dedicated to preserving Sanatan values through social service, education, healthcare, disaster relief, and compassionate support for those in need.",
+  "heroDonateBtn": "Donate Now",
+  "heroProgramsBtn": "See Our Programs",
+
+  "statLivesImpacted": "Lives Impacted",
+  "statProgramsDelivered": "Programs Delivered",
+  "statCountriesReached": "State Reached",
+  "statFundsRaised": "Funds Raised",
+
+  "footerAboutBlurb": "Working alongside communities to deliver education, healthcare, and disaster relief where it's needed most.",
+  "footerQuickLinks": "Quick Links",
+  "footerStayUpdated": "Stay Updated",
+  "footerNewsletterBody": "Get our latest news and impact stories.",
+  "footerEmailHint": "Your email",
+  "footerThanks": "Thanks for subscribing! 🎉",
+  "footerCopyright": "All rights reserved.",
+  
+
+  "programsHeading": "Our Programs",
+  "programsSubheading": "Every program below is funded directly by donors and run with local partners on the ground. Tap any program to see full details.",
+  "allPrograms": "All Programs",
+  "programNotFound": "Program not found",
+  "percentFunded": "{percent}% funded",
+  "@percentFunded": { "placeholders": { "percent": { "type": "int" } } },
+  "goalLabel": "Goal: {amount}",
+  "@goalLabel": { "placeholders": { "amount": { "type": "String" } } },
+  "raisedLabel": "{amount} raised",
+  "@raisedLabel": { "placeholders": { "amount": { "type": "String" } } },
+  "supportThisProgram": "Support This Program",
+  "detailsCta": "Details",
+
+  "blogHeading": "Blog & News",
+  "blogSubheading": "Updates, milestones, and stories from our programs.",
+  "allPosts": "All Posts",
+  "postNotFound": "Post not found",
+  "readCta": "Read",
+  "byAuthorReadTime": "By {author} · {minutes} min read",
+  "@byAuthorReadTime": { "placeholders": { "author": { "type": "String" }, "minutes": { "type": "int" } } },
+  "blogDonateCta": "Want to support programs like this?",
+
+  "aboutHeading": "Our Story",
+  "aboutStoryBody": "Vishwa Hindu Dharma Rakshak Seva Samiti was founded on 26 January 2014, following the national flag hoisting ceremony, with the vision of protecting Sanatan Dharma and serving society. On this historic occasion, the name of the organization was proposed by Pt. Jitendra Kumar \"Jeetu\" Dubey. To lay a strong foundation for the organization, he entrusted its establishment to his revered father, Late Shri Ram Sevak Dubey, under whose guidance and leadership the Samiti was formed. On 29 December 2019, the organization was officially registered, marking an important milestone that enabled it to expand its charitable and social service initiatives in a structured and organized manner. Today, Vishwa Hindu Dharma Rakshak Seva Samiti has established its presence across multiple Indian states. The organization's National Headquarters is located in Yelahanka, Bengaluru, Karnataka, from where its administrative and service activities are coordinated under the leadership of the National President, Pt. Jitendra Kumar \"Jeetu\" Dubey. With the dedicated efforts of its national, state, district, and local volunteers, the Samiti continues to expand its mission across Karnataka, Uttar Pradesh, Bihar, Rajasthan, and Punjab, with plans for further growth throughout India. In Karnataka, the organization actively serves across several districts of Bengaluru through district-level leadership. Its volunteers work tirelessly to support underprivileged families by providing educational assistance, medical support, disaster relief, humanitarian aid, and other community welfare initiatives. The journey of Vishwa Hindu Dharma Rakshak Seva Samiti is driven by a commitment to protecting Sanatan Dharma, serving humanity, preserving cultural values, and contributing to the nation's development through selfless service and collective responsibility.",
+  "ourVisionTitle": "Our Vision",
+  "ourVisionBody": "The core objective of our organization is the selfless service of Dharma, culture, and humanity. Our vision is to build a society where our heritage is protected, and no individual is deprived of their basic needs. It is our supreme duty to protect and promote the Hindu Dharma by organizing religious ceremonies (Pooja and Pratishtha) and maintaining the temples of our deities, Gaushalas (cow shelters), and traditional water bodies like Baolis (stepwells) and wells. Beyond cultural preservation, serving the poor, helpless, and underprivileged with utmost dedication is the primary goal of our committee and all its members. We are deeply committed to providing all possible support and financial assistance to underprivileged families who are unable to bear the marriage expenses of their daughters and sisters due to poverty. Recognizing our responsibility toward the future, the committee facilitates the education of underprivileged children who have a strong desire to study by arranging for their schooling and regularly distributing necessary stationery items. In the realm of healthcare, we strive to ensure that no poor individual is deprived of medical treatment by providing necessary medical assistance and medicines to those in need. Furthermore, in the event of any natural calamity or disaster anywhere in India, all our volunteers stand united to carry out extensive relief operations on the ground. Ultimately, organizing regular 'Narayan Seva' to feed the hungry and conducting continuous drives for the distribution of blankets, clothes, and essential items to the needy remain an integral and regular part of our mission.",
+  "ourMissionTitle": "Our Mission",
+  "ourMissionBody": "To build a society dedicated to the protection of Dharma, preservation of cultural heritage, and the progress of India, inspiring every individual to uphold the values of Sanatan Dharma, selfless service, unity, and national responsibility for a stronger and more prosperous nation.",
+  "ourJourneyHeading": "Our Journey",
+  "meetTheTeamHeading": "Meet the Team",
+  "transparencyHeading": "Transparency & Reports",
+  "transparencyBody": "We publish an annual report every year detailing exactly how funds are used.",
+  "downloadReportCta": "Download 2025 Annual Report",
+  "backToPrograms": "All Programs",
+
+
+  "founderName": "Shri Ram Sevak Dubey",
+  "founderRole": "Chief Founder",
+  "presidentName": "Pt. Jitendra Kumar \"Jeetu\" Dubey",
+  "presidentRole": "National President",
+  "womenPresidentName": "Smt. Sneha Lata Dubey",
+  "womenPresidentRole": "Women's Cell National President",
+  "vicePresidentName": "Shri Krishnappa H.",
+  "vicePresidentRole": "National Vice President",
+  "secretaryName": "Shri Anand Kumar Vishwakarma",
+  "secretaryRole": "National Secretary",
+  "deputySecretaryName": "Shri Dilip Kumar Singh",
+  "deputySecretaryRole": "Deputy National Secretary",
+  "treasurerName": "Shri Santosh Yadav",
+  "treasurerRole": "National Treasurer",
+  "deputyTreasurerName": "Shri Vijay Kumar Sharma",
+  "deputyTreasurerRole": "Deputy National Treasurer",
+  "chiefMentorName": "Shri Ram Bharosa Yadav",
+  "chiefMentorRole": "Chief Advisor / Mentor",
+  "deputyChiefMentorName": "Shri Ranjit Kumar Rai",
+  "deputyChiefMentorRole": "Deputy Chief Advisor / Mentor",
+  "nationalAdvisorName": "Shri Abhishek Brahmarshi",
+  "nationalAdvisorRole": "National Consultant / Advisor",
+  "deputyNationalAdvisorName": "Shri Ajay Kumar Pandey",
+  "deputyNationalAdvisorRole": "Deputy National Consultant / Advisor",
+
+
+  "sectionNationalAdvisors": "Additional National Advisors",
+  "sectionWomenCell": "Bangalore Women's Cell",
+  "sectionKarnataka": "Karnataka State & Zone Team",
+  "sectionUttarPradesh": "Uttar Pradesh Chapter",
+  
+  "advisorAjayName": "Shri Ajay Kumar Pandey",
+  "advisorPankajName": "Shri Pankaj Mahto",
+  "advisorDineshName": "Shri Dinesh Kumar Rai",
+  "advisorNaginaName": "Shri Nagina Verma",
+  "advisorBaljitName": "Shri Baljit Singh",
+  "advisorDharmendraName": "Shri Dharmendra Yadav",
+  "advisorSureshName": "Shri Suresh Jain",
+  "advisorNeerajName": "Shri Neeraj Kumar Yadav",
+  "advisorAnantName": "Shri Anant Singh",
+  "advisorRamjitName": "Shri Ramjit Saroj",
+  "advisorRupeshName": "Shri Rupesh Prasad",
+  "advisorRajuName": "Shri Raju Rana",
+  "advisorKunalName": "Shri Kunal Kumar Singh",
+  "generalAdvisorRole": "Deputy National Advisor",
+
+  "womenVPName": "Smt. Neha Sharma",
+  "womenVPRole": "National Women's Cell Vice President",
+  "supervisorUrmilaName": "Smt. Urmila Devi",
+  "supervisorRole": "Women's Cell Supervisor",
+  "secShaunaName": "Smt. Shauna Devi",
+  "secRole": "Women's Cell Secretary",
+  "distPresRaginiName": "Smt. Ragini Jha",
+  "distPresRole": "Women's Cell District President",
+  "supervisorSandhyaName": "Smt. Sandhya Devi",
+  "organizerShivaniName": "Kumari Shivani Nishad",
+  "organizerRole": "Women's Cell Organizer",
+  "memberReenaName": "Smt. Reena Devi",
+  "memberRekhaName": "Smt. Rekha Devi",
+  "memberPramilaName": "Smt. Pramila Devi",
+  "advisorReenaName": "Smt. Reena Devi",
+  "advisorRole": "Women's Cell Advisor",
+  "memberSanyuktName": "Smt. Sanyukt Devi",
+  "memberSushmitaName": "Smt. Sushmita Patra",
+  "memberPoojaName": "Smt. Pooja Devi",
+  "memberRole": "Women's Cell Member",
+
+  "karnatakaPresName": "Shri Mithlesh Tripathi",
+  "karnatakaPresRole": "Karnataka State President",
+  "karnatakaVP1Name": "Shri Brijesh Kushwaha",
+  "karnatakaVP2Name": "Shri Mangal Choubey",
+  "karnatakaVPRole": "Karnataka State Vice President",
+  "zoneSouthName": "Shri Vijay Shankar Mishra",
+  "zoneSouthRole": "South Zone President (Bangalore)",
+  "zoneNorthName": "Shri Anjani Kumar Mishra",
+  "zoneNorthRole": "North Zone President (Bangalore)",
+  "zoneEastName": "Shri Shailesh Lahoti",
+  "zoneEastRole": "East Zone President (Bangalore)",
+  "zoneCentralName": "Shri Bechan Prajapati",
+  "zoneCentralRole": "Central Zone President (Bangalore)",
+
+  "upPresName": "Shri Shailendra Dwivedi",
+  "upPresRole": "Uttar Pradesh State President",
+  "upAzamgarhName": "Shri Pankaj Mishra",
+  "upAzamgarhRole": "Azamgarh District President",
+  "upPrayagrajName": "Shri Neeraj Mishra",
+  "upPrayagrajRole": "Prayagraj District President",
+  "upGondaName": "Shri Naveen Yadav",
+  "upGondaRole": "Gonda District President",
+  "upMauName": "Shri Ram Pratap Singh",
+  "upMauRole": "Mau District President",
+
+
+  "featuredProgramsHeading": "Our Programs",
+  "featuredProgramsSubheading": "Every donation and volunteer hour goes directly into one of these initiatives.",
+  "viewAllPrograms": "View All Programs",
+
+  "testimonialsHeading": "Voices From Our Community",
+
+  "ctaHeading": "Ready to Make a Difference?",
+  "ctaBody": "Whether it's a one-time gift or your time as a volunteer, every contribution moves us closer to the communities that need it.",
+  "ctaVolunteerBtn": "Become a Volunteer",
+
+  "fpDharmaTitle": "Dharma & Temple Protection",
+  "fpDharmaDesc": "Protecting Hindu temples, Gaushalas, and preserving Sanatan religious heritage. We work to safeguard sacred places, promote cultural values, and encourage community participation in preserving our spiritual traditions.",
+  "fpNarayanTitle": "Narayan Seva",
+  "fpNarayanDesc": "Serving poor and needy families through food distribution, clothing, blankets, and essential support. Our volunteers are committed to extending compassion, dignity, and timely assistance to those facing hardship.",
+  "fpEducationTitle": "Education Support",
+  "fpEducationDesc": "Helping children from economically weaker families continue their education by providing study materials and educational assistance. We believe every child deserves the opportunity to learn, grow, and build a brighter future.",
+
+  "testimonial1Quote": "The Samiti stood by our family during a difficult time by providing food, clothing, and essential support. Their kindness gave us hope when we needed it most.",
+  "testimonial1Role": "Community Beneficiary",
+  "testimonial2Quote": "Being a volunteer with the Samiti has been a meaningful journey. Serving people with dedication and working together for society has been a truly rewarding experience.",
+  "testimonial2Role": "Volunteer",
+  "testimonial3Quote": "The Samiti's commitment to preserving our cultural values while serving humanity is truly inspiring. Their efforts make a positive difference in the lives of many families.",
+  "testimonial3Role": "Community Supporter",
+
+  "eventsHeading": "Events",
+  "eventsSubheading": "Join us in person or online.",
+  "upcomingEvents": "Upcoming",
+  "pastEvents": "Past Events",
+  "rsvpCta": "RSVP",
+
+  "galleryHeading": "Gallery",
+  "gallerySubheading": "Moments from our programs around the world.",
+
+  "rsvpDialogTitle": "RSVP for {eventTitle}",
+  "@rsvpDialogTitle": { "placeholders": { "eventTitle": { "type": "String" } } },
+  "rsvpNameLabel": "Full name",
+  "rsvpEmailLabel": "Email address",
+  "rsvpConfirmBtn": "Confirm RSVP",
+  "rsvpCancelBtn": "Cancel",
+  "rsvpConfirmedLabel": "You're Registered",
+  "rsvpSuccessSnackbar": "RSVP confirmed! See you there.",
+
+
+  "contactUs": "Contact Us",
+  "contactUsSubtitle": "We'd love to hear from you.",
+
+  "fullName": "Full name",
+  "emailAddress": "Email address",
+  "subject": "Subject",
+  "message": "Message",
+
+  "pleaseEnterName": "Please enter your name",
+  "pleaseEnterEmail": "Please enter your email",
+  "pleaseEnterValidEmail": "Please enter a valid email",
+  "pleaseEnterSubject": "Please enter a subject",
+  "pleaseEnterMessage": "Please enter a message",
+
+  "sendMessage": "Send Message",
+
+  "messageSent": "Message Sent",
+  "messageSentDescription": "Thanks for reaching out, {name}. Our team would normally reply within 1-2 business days.",
+
+  "@messageSentDescription": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  }
+}
