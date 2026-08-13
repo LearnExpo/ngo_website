@@ -117,6 +117,8 @@ class _Badge extends StatelessWidget {
 /// Simple illustrative visual built from shapes/icons — no image assets
 /// needed yet. Swap for real photography whenever you have it.
 class _HeroVisual extends StatelessWidget {
+  const _HeroVisual();
+
   @override
   Widget build(BuildContext context) {
     return AspectRatio(
@@ -129,31 +131,36 @@ class _HeroVisual extends StatelessWidget {
               gradient: AppColors.heroGradient.withOpacity(0.9),
               borderRadius: BorderRadius.circular(32),
             ),
-          )
-              .animate()
-              .fadeIn(duration: 600.ms)
-              .scale(begin: const Offset(0.9, 0.9), end: const Offset(1, 1)),
+          ).animate().fadeIn(duration: 600.ms).scale(
+                begin: const Offset(0.9, 0.9),
+                end: const Offset(1, 1),
+              ),
           Positioned(
             top: 10,
-            left: 100,
             child: const CircleAvatar(
-                    radius: 140,
-                    backgroundColor: Color.fromARGB(255, 175, 214, 247))
-                .animate()
-                .fadeIn(delay: 100.ms, duration: 500.ms)
-                .scale(begin: const Offset(0.8, 0.8), end: const Offset(1, 1)),
+              radius: 140,
+              backgroundColor: Color.fromARGB(255, 175, 214, 247),
+            ).animate().fadeIn(delay: 100.ms, duration: 500.ms).scale(
+                  begin: const Offset(0.8, 0.8),
+                  end: const Offset(1, 1),
+                ),
           ),
-          Positioned(
-            top: 10,
+          Center(
             child: Image.asset(
-              "assets/images/flag.png",
-              height: 400,
-              // fit: BoxFit.cover,
+              'assets/images/flag.png',
+              width: 300,
+              height: 300,
+              fit: BoxFit.contain,
+              errorBuilder: (context, error, stackTrace) {
+                debugPrint('Failed to load flag.png: $error');
+                return const Icon(
+                  Icons.error,
+                  color: Colors.red,
+                  size: 80,
+                );
+              },
             ),
-          )
-          // const Icon(Icons.volunteer_activism, size: 140, color: Colors.white)
-          //     .animate()
-          //     .fadeIn(delay: 200.ms, duration: 500.ms),
+          ),
         ],
       ),
     );

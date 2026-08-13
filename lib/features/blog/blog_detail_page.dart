@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:ngo_website/core/constants/breakpoints.dart';
 import 'package:ngo_website/core/localization/localized_text.dart';
 import '../../core/theme/app_colors.dart';
 import '../../data/blog_data.dart';
@@ -13,6 +14,8 @@ class BlogDetailPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final width = MediaQuery.of(context).size.width;
+    final isMobile = Breakpoints.isMobile(width);
     final post = findBlogPostById(postId);
     final l10n = AppLocalizations.of(context)!;
 
@@ -20,7 +23,8 @@ class BlogDetailPage extends StatelessWidget {
       return PageScaffold(
         title: 'Blog | VHDRSS',
         body: ContentContainer(
-          padding: const EdgeInsets.symmetric(vertical: 120),
+          padding: EdgeInsets.symmetric(
+              vertical: 120, horizontal: isMobile ? 16 : 0),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [

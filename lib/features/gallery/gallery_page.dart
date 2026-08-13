@@ -96,7 +96,8 @@ class GalleryPage extends StatelessWidget {
       title: 'Gallery | VHDRSS',
       description: "Photos from VHDRSS's programs around the world.",
       body: ContentContainer(
-        padding: const EdgeInsets.symmetric(vertical: 100),
+        padding:
+            EdgeInsets.symmetric(vertical: 100, horizontal: isMobile ? 16 : 0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [

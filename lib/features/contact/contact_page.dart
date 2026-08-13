@@ -52,7 +52,7 @@ class _ContactPageState extends State<ContactPage> {
           'Get in touch with VHDRSS — questions, partnerships, and support.',
       body: ContentContainer(
         padding:
-            EdgeInsets.symmetric(vertical: 100, horizontal: isMobile ? 10 : 0),
+            EdgeInsets.symmetric(vertical: 100, horizontal: isMobile ? 16 : 0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [

@@ -70,7 +70,7 @@ class ProgramDetailPage extends StatelessWidget {
       description: program.shortDescription.resolve(locale),
       body: ContentContainer(
         padding:
-            EdgeInsets.symmetric(vertical: 100, horizontal: isMobile ? 10 : 0),
+            EdgeInsets.symmetric(vertical: 100, horizontal: isMobile ? 16 : 0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [

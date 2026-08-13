@@ -95,7 +95,7 @@ class _AboutBlurb extends StatelessWidget {
             ),
             const SizedBox(width: 10),
             Text(
-              l10n.navName,
+              isMobile ? l10n.name : l10n.navName,
               style: const TextStyle(
                 color: Colors.white,
                 fontSize: 18,

@@ -244,6 +244,8 @@ class _EventsPageState extends State<EventsPage> {
 
   @override
   Widget build(BuildContext context) {
+    final width = MediaQuery.of(context).size.width;
+    final isMobile = Breakpoints.isMobile(width);
     final upcoming = kEvents.where((e) => e.isUpcoming).toList();
     final past = kEvents.where((e) => !e.isUpcoming).toList();
     final l10n = AppLocalizations.of(context)!;
@@ -254,7 +256,8 @@ class _EventsPageState extends State<EventsPage> {
       description:
           'See upcoming and past VHDRSS events, from fundraisers to volunteer orientations.',
       body: ContentContainer(
-        padding: const EdgeInsets.symmetric(vertical: 100),
+        padding:
+            EdgeInsets.symmetric(vertical: 100, horizontal: isMobile ? 16 : 0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [

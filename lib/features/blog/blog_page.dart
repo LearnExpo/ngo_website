@@ -25,7 +25,8 @@ class BlogPage extends StatelessWidget {
       title: 'Blog & News | VHDRSS',
       description: "Updates, milestones, and stories from VHDRSS's programs.",
       body: ContentContainer(
-        padding: const EdgeInsets.symmetric(vertical: 100),
+        padding:
+            EdgeInsets.symmetric(vertical: 100, horizontal: isMobile ? 16 : 0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [

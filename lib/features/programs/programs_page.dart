@@ -26,7 +26,8 @@ class ProgramsPage extends StatelessWidget {
       description:
           "Explore VHDRSS's active programs in education, healthcare, clean water, and disaster relief.",
       body: ContentContainer(
-        padding: const EdgeInsets.symmetric(vertical: 100),
+        padding:
+            EdgeInsets.symmetric(vertical: 100, horizontal: isMobile ? 16 : 0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
